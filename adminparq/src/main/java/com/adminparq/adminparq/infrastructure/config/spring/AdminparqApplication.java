@@ -1,13 +1,13 @@
-package com.adminparq.adminparq;
+package com.adminparq.adminparq.infrastructure.config.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 
 
-@ComponentScan(basePackages = "com.adminparq.adminparq.controller") /*paquetes que se encuentran a nivel
-del paquete y todos su hijos*/
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.adminparq.adminparq.infrastructure")
+@EntityScan(basePackages = "com.adminparq.adminparq.domain")
 public class AdminparqApplication {
 
 	public static void main(String[] args) {

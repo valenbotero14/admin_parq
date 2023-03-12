@@ -13,17 +13,17 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String user;
+    private String Employee;
     private String password;
 
     public Employee(){
 
     }
 
-    public Employee(Long id, String name, String user, String password) {
+    public Employee(Long id, String name, String Employee, String password) {
         this.id = id;
         this.name = name;
-        this.user = user;
+        this.Employee = Employee;
         this.password = password;
     }
 
@@ -43,12 +43,12 @@ public class Employee {
         this.name = name;
     }
 
-    public String getUser() {
-        return user;
+    public String getEmployee() {
+        return Employee;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setEmployee(String Employee) {
+        this.Employee = Employee;
     }
 
     public String getPassword() {
