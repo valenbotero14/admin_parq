@@ -1,3 +1,7 @@
+/**
+ * represent a set of data to be transmitted between different components or layers of an application
+ */
+
 package com.adminparq.adminparq.infrastructure.rest.spring.dto;
 
 import lombok.AllArgsConstructor;
@@ -9,6 +13,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class EmployeeDto {
 
   private Long id;

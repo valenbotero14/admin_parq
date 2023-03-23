@@ -1,3 +1,9 @@
+/**
+ * the service layer (service) is used to encapsulate complex business logic that cannot be expressed in domain objects directly
+ * intermediary between the presentation (UI) layer and the domain layer
+ * transactions and coordinate events within the domain
+ */
+
 package com.adminparq.adminparq.application.service;
 
 import com.adminparq.adminparq.application.repository.EmployeeRepository;
@@ -8,54 +14,53 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
-/**
- * /*Genera un constructor con un parametro para cada campo que requiere
- * un manejo especial
+
+/*
+ * is used to generate a constructor that takes all fields marked with @NonNull as arguments.
  */
 @RequiredArgsConstructor
 
-/**
- * simple logging facade
+/*
+  is used to automatically generate the code for logging events in a Java class.
+  Adds a logger to the class, allowing events to be logged to the application event log.
  */
 @Slf4j
 
-/**
- * construir una clase de servicio que habitualmente se conecta a varios repositorios
- * y agrupa su funcionalidad
+/*
+ * is used to mark a class as a service component in an application.
  */
 @Service
-
 public class EmployeeService {
 
-    private final EmployeeRepository EmployeeRepository;
+    private final EmployeeRepository employeeRepository;
 
-    public List<EmployeeEntity> getAllEmployee(){
+    public List<EmployeeEntity> getAllEmployee() {
 
-        return EmployeeRepository.getAllEmployee();
+        return employeeRepository.getAllEmployee();
     }
 
 
     public Employee getEmployee(Long id) {
 
-        return EmployeeRepository.findById(id);
+        return employeeRepository.findById(id);
     }
 
-    /*public Employee updateEmployee(Employee employee, Long id){
+    public Employee saveEmployee(Employee employee) {
 
-        return EmployeeRepository.save(employee);
-    }*/
+        return employeeRepository.save(employee);
 
-    public Employee saveEmployee(Employee Employee) {
+    }
 
-        return EmployeeRepository.save(Employee);
+    public void updateEmployee(Employee existentEmployee) {
 
+        employeeRepository.updateEmployee(existentEmployee);
     }
 
     public void deleteEmployee(long id) {
 
-        EmployeeRepository.deleteById(id);
+        employeeRepository.deleteById(id);
     }
+
 
 }

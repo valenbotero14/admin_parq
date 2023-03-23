@@ -1,5 +1,5 @@
 /**
- * Que se va a hacer con los datos
+ * What will be done with the data?
  */
 
 package com.adminparq.adminparq.infrastructure.db.springdata.repository;
@@ -15,69 +15,51 @@ import com.adminparq.adminparq.infrastructure.db.springdata.mapper.EmployeeEntit
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-import java.util.Objects;
 
 @RequiredArgsConstructor
-/**
- * anotación especifica la intención de que la clase anotada sea una clase empresarial.
- * Le dice a Spring que lo recoja y lo introduzca en el contexto de la aplicación.
+
+/*
+ * annotation specifies the intent for the annotated class to be a business class.
+ * Tells Spring to pick it up and put it in the application context.
  */
 @Service
 public class EmployeeDboRepository implements EmployeeRepository {
-  private final SpringDataEmployeeRepository EmployeeRepository;
 
-  private final EmployeeEntityMapper EmployeeMapper;
+  private final SpringDataEmployeeRepository employeeRepository;
+
+  private final EmployeeEntityMapper employeeMapper;
+
 
   @Override
-  public List<EmployeeEntity> getAllEmployee(){
+  public List<EmployeeEntity> getAllEmployee() {
 
-    return EmployeeRepository.findAll();
+    return employeeRepository.findAll();
   }
-
 
   @Override
   public Employee findById(Long id) {
-    return EmployeeMapper.toDomain(EmployeeRepository.findById(id).orElseThrow());
+
+    return employeeMapper.toDomain(employeeRepository.findById(id).orElseThrow());
   }
 
-  /*@Override
-  public EmployeeEntity updateEmployee(Employee employee, Long id){
-
-    EmployeeEntity emplo
-            = EmployeeRepository.findById(id).get();
-    if (Objects.nonNull(employee.getName())
-            && !"".equalsIgnoreCase(
-            employee.getName())) {
-      emplo.setName(
-              employee.getName());
-    }
-    if (Objects.nonNull(employee.getUser())
-            && !"".equalsIgnoreCase(
-            employee.getUser())) {
-      emplo.setUser(employee.getUser());
-    }
-    if (Objects.nonNull(employee.getPassword())
-            && !"".equalsIgnoreCase(
-            employee.getPassword())) {
-      emplo.setPassword(
-              employee.getPassword());
-    }
-
-    return EmployeeRepository.save(emplo);
-  }*/
-
-
-
   @Override
-  public Employee save(Employee Employee) {
-    return EmployeeMapper.toDomain(EmployeeRepository.save(EmployeeMapper.toDbo(Employee)));
+  public Employee save(Employee employee) {
+    return employeeMapper.toDomain(employeeRepository.save(employeeMapper.toDbo(employee)));
 
   }
-  @Override
-  public void deleteById(Long id){
 
-    EmployeeRepository.deleteById(id);
+  @Override
+  public Employee updateEmployee(Employee employee) {
+
+    return employeeMapper.toDomain(employeeRepository.save(employeeMapper.toDbo(employee)));
+  }
+
+  @Override
+  public void deleteById(Long id) {
+
+    employeeRepository.deleteById(id);
 
   }
 
 }
+

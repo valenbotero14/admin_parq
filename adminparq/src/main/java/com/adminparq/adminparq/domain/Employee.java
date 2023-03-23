@@ -1,6 +1,9 @@
-package com.adminparq.adminparq.domain;
+/**
+ * Domain - refers to the scope or business that is being modeled in software, and the use of a common language
+ * throughout the development team helps create more accurate and useful software models.
+ */
 
-/*Objeto*/
+package com.adminparq.adminparq.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,12 +11,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-@Getter /*obtener el valor de una propiedad de la clase y asi poder utilizar
-dicho valor en diferentes metodos */
-@Setter /*su funcion permite brindar acceso a propiedades especificas para poder asignar
-un valor fuera de la clase */
-@AllArgsConstructor /*genera un constructor para todos los atributos de la clase.*/
-@NoArgsConstructor /*genera un constructor sin argumentos, uno vacío */
+/*
+* Getter - which returns the value of a class field
+* Setter - sets the value of a class field
+ */
+@Getter
+@Setter
+
+/*
+automatically generates a constructor with all the fields of the class as arguments.
+ */
+@AllArgsConstructor
+
+/*
+* automatically generates a no-argument constructor on a class.
+ */
+@NoArgsConstructor
+
 public class Employee {
 
     private Long id;

@@ -1,21 +1,29 @@
 package com.adminparq.adminparq.infrastructure.config.spring;
 
-/*Corre la aplicación - configuraciones basicas de spring*/
-/*Cors - compara haber si se pueden comunicar - intercambiar recursos*/
-/*@Configuration - indica que la clase decorada es una clase de configuracion utilizada para declarar uno o varios */
-/*@EnableAutoConfiguration: le dice a Spring que configure automáticamente
-su aplicación en función de las dependencias presentes en el classpath.*/
-/*@ComponentScan: le dice a Spring que escanee el paquete especificado y registre
-todos los componentes anotados como beans en el contexto.*/
-/*SpringApplicationLa clase inicia automáticamente nuestra aplicación Spring Boot desde el método main().*/
+/*
+ * Run the application - basic spring settings
+ * Cores - check if they can communicate - exchange resources
+ * Configuration - indicates that the decorated class is a configuration class used to declare one or more
+ * EnableAutoConfiguration: tells Spring to automatically configure
+ * your application based on the dependencies present in the classpath.
+ * ComponentScan - Tells Spring to scan the specified package and log
+ * all components annotated as beans in the context.
+ * The SpringApplication class automatically starts our Spring Boot application from the main() method.
+ */
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-//import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+
+/*
+* mark the main class of the Spring Boot application
+ */
 @SpringBootApplication(scanBasePackages = "com.adminparq.adminparq.infrastructure")
-//@EnableJpaRepositories
+
+/*
+* scans the package and its subpackages to find Spring components like controllers, services, repositories, etc.
+ */
 @EntityScan(basePackages = "com.adminparq.adminparq.domain")
 public class AdminparqApplication {
 

@@ -1,3 +1,9 @@
+/**
+ * manages access and persistence of domain objects in a database
+ * Interface between the domain layer and the infrastructure layer
+ * Apply additional business rules during the persistence of domain objects
+ */
+
 package com.adminparq.adminparq.application.repository;
 
 import com.adminparq.adminparq.domain.Employee;
@@ -7,16 +13,30 @@ import java.util.List;
 
 public interface EmployeeRepository {
 
+    /**
+     * List Employee
+     */
     List<EmployeeEntity> getAllEmployee();
 
-
+    /**
+     * Search employee
+     */
     Employee findById(Long id);
 
-    Employee save(Employee Employee);
+    /**
+     * Save employee
+     */
+    Employee save(Employee employee);
 
-   /* EmployeeEntity updateEmployee(Employee Employee, Long id);*/
+    /**
+     * Update employee
+     */
+    Employee updateEmployee(Employee employee);
 
 
+    /**
+     * Delete employee
+     */
     void deleteById(Long id);
 
 

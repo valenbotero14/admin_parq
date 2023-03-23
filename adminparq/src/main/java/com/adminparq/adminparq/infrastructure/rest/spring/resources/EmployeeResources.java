@@ -1,72 +1,82 @@
+/**
+ * resources used by an application
+ */
+
 package com.adminparq.adminparq.infrastructure.rest.spring.resources;
 
-import com.adminparq.adminparq.application.repository.EmployeeRepository;
+
 import com.adminparq.adminparq.domain.Employee;
 import com.adminparq.adminparq.infrastructure.db.springdata.dbo.EmployeeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import com.adminparq.adminparq.application.service.EmployeeService;
 import com.adminparq.adminparq.infrastructure.rest.spring.dto.EmployeeDto;
 import com.adminparq.adminparq.infrastructure.rest.spring.mapper.EmployeeMapper;
 import lombok.RequiredArgsConstructor;
 
+
 import java.util.List;
 
 @RequiredArgsConstructor
-/**
- * se utiliza para crear API RESTful. Es una combinación de anotaciones @Controller y @ResponseBody.
+
+/*
+ * used to create RESTful APIs. It is a combination of @Controller and @ResponseBody annotations
  */
 @RestController
 public class EmployeeResources {
 
     @Autowired
-    private final EmployeeService EmployeeService;
+    private final EmployeeService employeeService;
 
     @Autowired
-    private final EmployeeMapper EmployeeMapper;
+    private final EmployeeMapper employeeMapper;
 
 
-    /**
-     * Listar empleados
-     */
     @GetMapping("listEmployee")
     public List<EmployeeEntity> getAllEmployee() {
-        return EmployeeService.getAllEmployee();
+
+        return employeeService.getAllEmployee();
     }
 
-
-    /**
-     * Obtener por el id
-     */
     @GetMapping("getEmployeeById/{id}")
     public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable Long id) {
 
-        return new ResponseEntity<>(EmployeeMapper.toDto(EmployeeService.getEmployee(id)), HttpStatus.OK);
+        return new ResponseEntity<>(employeeMapper.toDto(employeeService.getEmployee(id)), HttpStatus.OK);
 
     }
 
     @PostMapping("employee")
-    public ResponseEntity<EmployeeDto> saveEmployee(@RequestBody EmployeeDto EmployeeDto) {
+    public ResponseEntity<EmployeeDto> saveEmployee(@RequestBody EmployeeDto employeeDto) {
 
-        return new ResponseEntity<>(EmployeeMapper.toDto(EmployeeService.saveEmployee(EmployeeMapper.toDomain(EmployeeDto))),
+        return new ResponseEntity<>(employeeMapper.toDto(employeeService.saveEmployee(employeeMapper.toDomain(employeeDto))),
                 HttpStatus.CREATED );
 
     }
 
-    /*@PutMapping("updateEmployeeById/{id}")
-    public Employee updateEmployee(@RequestBody Employee employee, @PathVariable Long id){
+    @PutMapping ("updateEmployeeById/{id}")
+    public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
 
-        return EmployeeService.updateEmployee(employee, id);
-    }*/
+        Employee existentEmployee = employeeService.getEmployee(id);
 
-    @DeleteMapping("deleteEmployeeById/{id}")
-    public String deleteEmployee(@PathVariable Long id){
+        existentEmployee.setId(id);
+        existentEmployee.setName(employee.getName());
+        existentEmployee.setUser(employee.getUser());
+        existentEmployee.setPassword(employee.getPassword());
 
-        EmployeeService.deleteEmployee(id);
-        return "Employee with ID :"+id+" is deleted";
+          employeeService.updateEmployee(existentEmployee);
+
+
+        return existentEmployee;
     }
 
-}
+    @DeleteMapping("deleteEmployeeById/{id}")
+            public String deleteEmployee(@PathVariable Long id){
+
+                employeeService.deleteEmployee(id);
+                return "Employee number :"+id+" deleted";
+            }
+
+        }
+

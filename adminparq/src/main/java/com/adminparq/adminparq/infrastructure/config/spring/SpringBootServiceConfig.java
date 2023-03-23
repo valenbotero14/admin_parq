@@ -1,6 +1,8 @@
-package com.adminparq.adminparq.infrastructure.config.spring;
+/**
+ * Join the repository with the service
+ */
 
-/*Une el repositorio con el servicio*/
+package com.adminparq.adminparq.infrastructure.config.spring;
 
 import com.adminparq.adminparq.application.repository.ParkingRepository;
 import com.adminparq.adminparq.application.repository.VehicleRepository;
@@ -12,13 +14,19 @@ import org.springframework.context.annotation.Configuration;
 import com.adminparq.adminparq.application.repository.EmployeeRepository;
 import com.adminparq.adminparq.application.service.EmployeeService;
 
+/*
+* used to indicate that a class is a source of Spring bean definitions
+ */
 @Configuration
 public class SpringBootServiceConfig {
 
 
+    /*
+    *it is used to declare methods that return objects that must be managed by the Spring container as beans.
+     */
     @Bean
-    public EmployeeService EmployeeService(EmployeeRepository EmployeeRepository) {
-        return new EmployeeService(EmployeeRepository);
+    public EmployeeService employeeService(EmployeeRepository employeeRepository) {
+        return new EmployeeService(employeeRepository);
     }
 
    /* @Bean

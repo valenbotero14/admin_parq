@@ -1,5 +1,5 @@
 /**
- * Media entre la capa de acceso a datos y la capa de lógica empresarial
+ * Media between the data access layer and the business logic layer
  */
 
 package com.adminparq.adminparq.infrastructure.db.springdata.repository;
@@ -10,8 +10,8 @@ import org.springframework.stereotype.Repository;
 import com.adminparq.adminparq.infrastructure.db.springdata.dbo.EmployeeEntity;
 
 /**
- * La anotación indica que la interfaz subyacente es un repositorio y le dice a Spring que lo registre
- * como un bean en el contexto durante la exploración de componentes.
+ * The annotation indicates that the underlying interface is a repository and tells Spring to register it
+ * as a bean in the context during component scanning.
  */
 @Repository
 public interface SpringDataEmployeeRepository extends JpaRepository<EmployeeEntity, Long> {
