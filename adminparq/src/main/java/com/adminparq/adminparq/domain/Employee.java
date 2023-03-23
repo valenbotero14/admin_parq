@@ -1,9 +1,12 @@
 package com.adminparq.adminparq.domain;
 
+/*Objeto*/
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 @Getter /*obtener el valor de una propiedad de la clase y asi poder utilizar
 dicho valor en diferentes metodos */
@@ -13,12 +16,12 @@ un valor fuera de la clase */
 @NoArgsConstructor /*genera un constructor sin argumentos, uno vacío */
 public class Employee {
 
-  private Long id;
+    private Long id;
 
-  private String name;
+    private String name;
 
-  private String user;
+    private String user;
 
-  private String password;
+    private String password;
 
 }
