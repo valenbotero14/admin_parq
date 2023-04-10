@@ -49,9 +49,9 @@ public class EmployeeDboRepository implements EmployeeRepository {
   }
 
   @Override
-  public Employee updateEmployee(Employee employee) {
+  public void updateEmployee(Employee employee) {
 
-    return employeeMapper.toDomain(employeeRepository.save(employeeMapper.toDbo(employee)));
+      employeeMapper.toDomain(employeeRepository.save(employeeMapper.toDbo(employee)));
   }
 
   @Override

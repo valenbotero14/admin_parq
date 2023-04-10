@@ -38,12 +38,14 @@ public class EmployeeService {
     public List<EmployeeEntity> getAllEmployee() {
 
         return employeeRepository.getAllEmployee();
+
     }
 
 
     public Employee getEmployee(Long id) {
 
         return employeeRepository.findById(id);
+
     }
 
     public Employee saveEmployee(Employee employee) {
@@ -55,11 +57,13 @@ public class EmployeeService {
     public void updateEmployee(Employee existentEmployee) {
 
         employeeRepository.updateEmployee(existentEmployee);
+
     }
 
     public void deleteEmployee(long id) {
 
         employeeRepository.deleteById(id);
+
     }
 
 

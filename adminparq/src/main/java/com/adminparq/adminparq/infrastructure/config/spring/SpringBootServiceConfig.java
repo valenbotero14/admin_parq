@@ -29,13 +29,15 @@ public class SpringBootServiceConfig {
         return new EmployeeService(employeeRepository);
     }
 
-   /* @Bean
-    public ParkingService ParkingService(ParkingRepository ParkingRepository) {
-        return new ParkingService(ParkingRepository);
+   @Bean
+    public ParkingService parkingService(ParkingRepository parkingRepository) {
+
+        return new ParkingService(parkingRepository);
+
     }
 
-    @Bean
-    public VehicleService VehicleService(VehicleRepository VehicleRepository) {
-        return new VehicleService(VehicleRepository);
-    }*/
+   @Bean
+    public VehicleService vehicleService(VehicleRepository vehicleRepository) {
+        return new VehicleService(vehicleRepository);
+    }
 }

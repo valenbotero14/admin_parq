@@ -75,7 +75,7 @@ public class EmployeeResources {
             public String deleteEmployee(@PathVariable Long id){
 
                 employeeService.deleteEmployee(id);
-                return "Employee number :"+id+" deleted";
+                return "Employee number :"+id+" deleted successful";
             }
 
         }

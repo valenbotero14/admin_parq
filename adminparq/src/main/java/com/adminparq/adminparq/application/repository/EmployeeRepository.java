@@ -31,7 +31,7 @@ public interface EmployeeRepository {
     /**
      * Update employee
      */
-    Employee updateEmployee(Employee employee);
+    void updateEmployee(Employee employee);
 
 
     /**
