@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Time;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "parking_vehicle")
@@ -22,20 +23,17 @@ public class ParkingVehicleEntity {
     @Column (name = "id", unique = true, nullable = false)
     private Long id;
 
-    @ManyToOne
-    @PrimaryKeyJoinColumn(name = "vehicle_id")
-    VehicleEntity vehicle;
+    @Column(name = "vehicle_id")
+    private int vehicle;
 
-    @ManyToOne
-    @PrimaryKeyJoinColumn(name = "parking_id")
-    ParkingEntity parking;
+    @Column(name = "parking_id")
+    private int parking;
 
     @Column (name = "time_entrance")
-    private Time timeEntrance;
+    private LocalDateTime timeEntrance;
 
     @Column (name = "time_output")
-    private Time timeOutput;
-
+    private LocalDateTime timeOutput;
 
 
 }

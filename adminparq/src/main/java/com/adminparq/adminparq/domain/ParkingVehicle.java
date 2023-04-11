@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Time;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -18,13 +19,13 @@ public class ParkingVehicle {
 
     private Long id;
 
-    private VehicleEntity vehicle;
+    private int vehicle;
 
-    private ParkingEntity parking;
+    private int parking;
 
-    private Time timeEntrance;
+    private LocalDateTime timeEntrance;
 
-    private Time timeOutput;
+    private LocalDateTime timeOutput;
 
 
 }

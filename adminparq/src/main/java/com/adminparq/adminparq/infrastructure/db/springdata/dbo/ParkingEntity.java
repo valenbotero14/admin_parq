@@ -27,7 +27,4 @@ public class ParkingEntity {
     @Column (name = "parking_type")
     private String parkingType;
 
-    @OneToMany(mappedBy = "parking")
-    ParkingVehicleEntity parkingVehicle;
-
 }
