@@ -5,8 +5,10 @@
 package com.adminparq.adminparq.infrastructure.config.spring;
 
 import com.adminparq.adminparq.application.repository.ParkingRepository;
+import com.adminparq.adminparq.application.repository.ParkingVehicleRepository;
 import com.adminparq.adminparq.application.repository.VehicleRepository;
 import com.adminparq.adminparq.application.service.ParkingService;
+import com.adminparq.adminparq.application.service.ParkingVehicleService;
 import com.adminparq.adminparq.application.service.VehicleService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,5 +41,10 @@ public class SpringBootServiceConfig {
    @Bean
     public VehicleService vehicleService(VehicleRepository vehicleRepository) {
         return new VehicleService(vehicleRepository);
+    }
+
+    @Bean
+    public ParkingVehicleService parkingVehicleService(ParkingVehicleRepository parkingVehicleRepository) {
+        return new ParkingVehicleService (parkingVehicleRepository);
     }
 }
