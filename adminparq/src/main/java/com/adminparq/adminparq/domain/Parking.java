@@ -14,13 +14,8 @@ import lombok.Setter;
 public class Parking {
 
    private Long id;
-
-   private Long code;
-
    /*Fuel4, Fuel2, Elec4, Elec2 */
    private String parkingType;
-
-
 
 
 }

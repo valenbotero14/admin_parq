@@ -14,7 +14,7 @@ public class Vehicle {
 
     private Long id;
 
-    private String licence;
+    private String plate;
 
     private String vehicleType;
 

@@ -20,14 +20,16 @@ public class VehicleEntity {
     @Column (name = "id", unique = true, nullable = false)
     private Long id;
 
-    @Column (name = "licence")
-    private String licence;
+    @Column (name = "plate")
+    private String plate;
 
     @Column (name = "vehicle_type")
     private String vehicleType;
 
     @Column (name = "tire")
     private String tire;
+
+
 
 
 }

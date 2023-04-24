@@ -8,6 +8,7 @@ import com.adminparq.adminparq.infrastructure.db.springdata.mapper.VehicleEntity
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -32,6 +33,12 @@ public class VehicleDboRepository implements VehicleRepository {
     }
 
     @Override
+    public Vehicle findByPlate (String plate){
+
+        return vehicleMapper.toDomain(vehicleRepository.findByPlate(plate));
+    }
+
+    @Override
     public Vehicle save(Vehicle vehicle) {
         return vehicleMapper.toDomain(vehicleRepository.save(vehicleMapper.toDbo(vehicle)));
 
@@ -48,6 +55,7 @@ public class VehicleDboRepository implements VehicleRepository {
         vehicleRepository.deleteById(id);
 
     }
+
 
 }
 

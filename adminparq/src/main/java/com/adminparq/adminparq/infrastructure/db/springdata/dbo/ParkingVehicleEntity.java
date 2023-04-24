@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Time;
 import java.time.LocalDateTime;
 
 @Entity
@@ -34,6 +33,8 @@ public class ParkingVehicleEntity {
 
     @Column (name = "time_output")
     private LocalDateTime timeOutput;
+
+
 
 
 }

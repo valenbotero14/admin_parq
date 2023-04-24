@@ -21,9 +21,6 @@ public class ParkingEntity {
     @Column (name = "id", unique = true, nullable = false)
     private Long id;
 
-    @Column (name = "code")
-    private Long code;
-
     @Column (name = "parking_type")
     private String parkingType;
 

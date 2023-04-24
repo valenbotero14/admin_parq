@@ -20,4 +20,6 @@ public interface VehicleRepository {
 
     void deleteById (Long id);
 
+
+    Vehicle findByPlate (String plate);
 }

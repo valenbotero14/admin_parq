@@ -3,6 +3,7 @@ package com.adminparq.adminparq.infrastructure.rest.spring.resources;
 import com.adminparq.adminparq.application.service.VehicleService;
 import com.adminparq.adminparq.domain.Vehicle;
 import com.adminparq.adminparq.infrastructure.db.springdata.dbo.VehicleEntity;
+import com.adminparq.adminparq.infrastructure.rest.spring.dto.ParkingVehicleDto;
 import com.adminparq.adminparq.infrastructure.rest.spring.dto.VehicleDto;
 import com.adminparq.adminparq.infrastructure.rest.spring.mapper.VehicleMapper;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +12,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 
@@ -24,6 +27,8 @@ public class VehicleResources {
 
     @Autowired
     private final VehicleMapper vehicleMapper;
+
+
 
 
     @GetMapping("listVehicle")
@@ -39,6 +44,16 @@ public class VehicleResources {
 
     }
 
+    /*Validate that the car exists in the db*/
+    @GetMapping("getVehicleByPlate/{plate}")
+    public ResponseEntity<VehicleDto> getVehicleByPlate (@PathVariable String plate) {
+
+        return new ResponseEntity<>(vehicleMapper.toDto(vehicleService.findByPlate(plate)), HttpStatus.OK);
+
+    }
+
+
+
     @PostMapping("vehicle")
     public ResponseEntity<VehicleDto> saveVehicle(@RequestBody VehicleDto vehicleDto) {
 
@@ -53,7 +68,7 @@ public class VehicleResources {
         Vehicle existentVehicle = vehicleService.getVehicle(id);
 
         existentVehicle.setId(id);
-        existentVehicle.setLicence(vehicle.getLicence());
+        existentVehicle.setPlate(vehicle.getPlate());
         existentVehicle.setVehicleType(vehicle.getVehicleType());
         existentVehicle.setTire(vehicle.getTire());
 
@@ -69,6 +84,8 @@ public class VehicleResources {
         vehicleService.deleteVehicle(id);
         return "Vehicle number :"+id+" deleted successful";
     }
+
+
 
 }
 

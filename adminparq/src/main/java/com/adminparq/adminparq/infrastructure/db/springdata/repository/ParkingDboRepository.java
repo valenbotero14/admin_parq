@@ -5,6 +5,7 @@ import com.adminparq.adminparq.application.repository.ParkingRepository;
 import com.adminparq.adminparq.domain.Parking;
 import com.adminparq.adminparq.infrastructure.db.springdata.dbo.ParkingEntity;
 import com.adminparq.adminparq.infrastructure.db.springdata.mapper.ParkingEntityMapper;
+import com.adminparq.adminparq.infrastructure.rest.spring.dto.VehicleDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +50,7 @@ public class ParkingDboRepository implements ParkingRepository {
         parkingRepository.deleteById(id);
 
     }
+
 
 }
 

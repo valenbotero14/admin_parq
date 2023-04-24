@@ -14,8 +14,6 @@ public class ParkingDto {
 
     private Long id;
 
-    private Long code;
-
     private String parkingType;
 
 

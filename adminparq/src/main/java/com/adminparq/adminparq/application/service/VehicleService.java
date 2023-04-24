@@ -31,6 +31,11 @@ public class VehicleService {
 
     }
 
+    public Vehicle findByPlate (String plate) {
+
+        return vehicleRepository.findByPlate(plate);
+    }
+
     public Vehicle saveVehicle(Vehicle vehicle) {
 
         return vehicleRepository.save(vehicle);
