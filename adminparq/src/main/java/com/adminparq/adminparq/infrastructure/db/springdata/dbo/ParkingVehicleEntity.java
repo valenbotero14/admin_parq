@@ -28,6 +28,10 @@ public class ParkingVehicleEntity {
     @Column(name = "parking_id")
     private int parking;
 
+    @Column(name = "capacity")
+    private int capacity;
+
+
     @Column (name = "time_entrance")
     private LocalDateTime timeEntrance;
 

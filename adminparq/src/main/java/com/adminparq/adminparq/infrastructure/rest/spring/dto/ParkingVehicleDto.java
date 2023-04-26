@@ -20,6 +20,8 @@ public class ParkingVehicleDto {
 
     private int parking;
 
+    private int capacity;
+
     private LocalDateTime timeEntrance;
 
     private LocalDateTime timeOutput;

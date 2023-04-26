@@ -3,18 +3,14 @@ package com.adminparq.adminparq.application.service;
 import com.adminparq.adminparq.application.repository.ParkingVehicleRepository;
 import com.adminparq.adminparq.domain.ParkingVehicle;
 import com.adminparq.adminparq.infrastructure.db.springdata.dbo.ParkingVehicleEntity;
-import com.adminparq.adminparq.infrastructure.rest.spring.dto.VehicleDto;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @RequiredArgsConstructor
 @Slf4j
