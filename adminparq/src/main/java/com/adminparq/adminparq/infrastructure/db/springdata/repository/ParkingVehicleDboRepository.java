@@ -32,6 +32,13 @@ public class ParkingVehicleDboRepository implements ParkingVehicleRepository {
         return parkingVehicleMapper.toDomain(parkingVehicleRepository.findById(id).orElseThrow());
     }
 
+    @Override
+    public List<ParkingVehicleEntity> findAllByParkingId (Long id){
+
+        return  parkingVehicleRepository.findAllByParkingId(id);
+
+    }
+
 
 
     @Override

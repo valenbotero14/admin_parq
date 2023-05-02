@@ -3,12 +3,10 @@ package com.adminparq.adminparq.application.service;
 import com.adminparq.adminparq.application.repository.ParkingVehicleRepository;
 import com.adminparq.adminparq.domain.ParkingVehicle;
 import com.adminparq.adminparq.infrastructure.db.springdata.dbo.ParkingVehicleEntity;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -27,6 +25,11 @@ public class ParkingVehicleService {
 
     }
 
+
+    public  List<ParkingVehicleEntity> findAllByParkingId (Long id) {
+
+        return parkingVehicleRepository.findAllByParkingId(id);
+    }
 
 
     public ParkingVehicle getParkingVehicle(Long id) {

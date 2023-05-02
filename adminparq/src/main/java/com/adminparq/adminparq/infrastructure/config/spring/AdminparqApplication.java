@@ -25,7 +25,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 * scans the package and its subpackages to find Spring components like controllers, services, repositories, etc.
  */
 @EntityScan(basePackages = "com.adminparq.adminparq.domain")
-public class AdminparqApplication {
+public class  AdminparqApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(AdminparqApplication.class, args);

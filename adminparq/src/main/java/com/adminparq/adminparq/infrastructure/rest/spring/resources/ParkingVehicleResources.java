@@ -3,11 +3,13 @@ package com.adminparq.adminparq.infrastructure.rest.spring.resources;
 
 import com.adminparq.adminparq.application.repository.ParkingVehicleRepository;
 import com.adminparq.adminparq.application.repository.VehicleRepository;
+import com.adminparq.adminparq.application.service.ParkingService;
 import com.adminparq.adminparq.application.service.ParkingVehicleService;
 
 import com.adminparq.adminparq.domain.ParkingVehicle;
 
 import com.adminparq.adminparq.domain.Vehicle;
+import com.adminparq.adminparq.infrastructure.db.springdata.dbo.ParkingEntity;
 import com.adminparq.adminparq.infrastructure.db.springdata.dbo.ParkingVehicleEntity;
 
 import com.adminparq.adminparq.infrastructure.db.springdata.dbo.VehicleEntity;
@@ -16,11 +18,13 @@ import com.adminparq.adminparq.infrastructure.db.springdata.repository.VehicleDb
 import com.adminparq.adminparq.infrastructure.rest.spring.dto.ParkingDto;
 import com.adminparq.adminparq.infrastructure.rest.spring.dto.ParkingVehicleDto;
 
+import com.adminparq.adminparq.infrastructure.rest.spring.dto.ResponseDto;
 import com.adminparq.adminparq.infrastructure.rest.spring.dto.VehicleDto;
 import com.adminparq.adminparq.infrastructure.rest.spring.mapper.ParkingVehicleMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.data.repository.query.Param;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +51,9 @@ public class ParkingVehicleResources {
 
 
     private final Map<Integer, ParkingVehicleDto> parkingCar = new HashMap<>(); //HashMap to store the cars in the parking lot
+
+    @Autowired
+    private final ParkingService parkingService;
 
 
     @GetMapping("listParkingVehicle")
@@ -104,6 +111,36 @@ public class ParkingVehicleResources {
 
         return new ResponseEntity<>(parkingVehicleMapper.toDto(parkingVehicleService.saveParkingVehicle(parkingVehicleMapper.toDomain(parkingVehicleDto))),
                 HttpStatus.CREATED);
+
+    }
+
+    @GetMapping("avaliableParking")
+    public ResponseEntity<ResponseDto> avaliableParking(@RequestParam(defaultValue = "") String typeVehicle) {
+
+        List<ParkingEntity> parkingData = parkingService.getAllParking();
+
+        int countParking = parkingData.size();
+
+        int incremento = 0;
+
+        for (int i = 0; i < countParking; i++) {
+
+            List<ParkingVehicleEntity> parkingVehicleEntity = parkingVehicleService.findAllByParkingId(parkingData.get(i).getId());
+
+            for (int z = 0; z < parkingVehicleEntity.size(); z++){
+
+                if (parkingVehicleEntity.get(z).getTimeOutput() == null) {
+
+                    incremento++;
+
+                }
+
+            }
+
+
+        }
+        return new ResponseEntity<>(new ResponseDto("Celdas disponiles", 200, incremento), HttpStatus.OK);
+
 
     }
 

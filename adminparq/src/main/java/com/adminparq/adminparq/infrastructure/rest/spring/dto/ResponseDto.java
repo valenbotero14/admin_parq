@@ -5,25 +5,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class ParkingVehicleDto {
+public class ResponseDto {
 
-    private Long id;
+    private String message;
 
-    private int vehicle;
+    private int code;
 
-    private int parking;
-
-    private LocalDateTime timeEntrance;
-
-    private LocalDateTime timeOutput;
-
-
+    private Object data;
 
 }
