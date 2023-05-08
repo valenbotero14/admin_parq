@@ -17,6 +17,8 @@ public class ResponseDto {
 
     private int code;
 
-    private Object data;
+
+
+
 
 }

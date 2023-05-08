@@ -13,4 +13,6 @@ public interface SpringDataParkingVehicleRepository  extends JpaRepository<Parki
 
     List<ParkingVehicleEntity> findAllByParkingId(Long id);
 
+
+
 }

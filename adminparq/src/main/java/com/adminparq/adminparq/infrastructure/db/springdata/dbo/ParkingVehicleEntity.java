@@ -25,8 +25,9 @@ public class ParkingVehicleEntity {
     @Column(name = "vehicle_id")
     private int vehicle;
 
-    @Column(name = "parking_id")
-    private int parking;
+    @ManyToOne
+    @JoinColumn(name = "parking_id", referencedColumnName = "id")
+    private ParkingEntity parking;
 
     @Column (name = "time_entrance")
     private LocalDateTime timeEntrance;

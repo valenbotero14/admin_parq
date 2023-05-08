@@ -24,4 +24,13 @@ public class ParkingEntity {
     @Column (name = "parking_type")
     private String parkingType;
 
+    @Column (name = "capacity")
+    private Integer capacity;
+
+    /*deserialize the JSON object*/
+    public ParkingEntity(Long id) {
+        this.id = id;
+    }
+
+
 }

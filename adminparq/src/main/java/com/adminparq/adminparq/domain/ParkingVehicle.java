@@ -20,12 +20,13 @@ public class ParkingVehicle {
 
     private int vehicle;
 
-    private int parking;
+    private ParkingEntity parking;
 
     private LocalDateTime timeEntrance;
 
     private LocalDateTime timeOutput;
 
 
-
+    public ParkingVehicle(LocalDateTime entrada, LocalDateTime salida) {
+    }
 }

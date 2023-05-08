@@ -16,5 +16,6 @@ public class ParkingDto {
 
     private String parkingType;
 
+    private Integer capacity;
 
 }

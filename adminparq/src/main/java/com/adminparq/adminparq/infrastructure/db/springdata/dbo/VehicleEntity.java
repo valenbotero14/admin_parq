@@ -1,5 +1,6 @@
 package com.adminparq.adminparq.infrastructure.db.springdata.dbo;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,7 +29,6 @@ public class VehicleEntity {
 
     @Column (name = "tire")
     private String tire;
-
 
 
 

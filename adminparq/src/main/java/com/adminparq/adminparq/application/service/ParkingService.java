@@ -47,4 +47,8 @@ public class ParkingService {
 
     }
 
+    /*public long countAllParking() {
+
+        return ParkingRepository.count();
+    }*/
 }

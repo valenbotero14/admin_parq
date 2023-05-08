@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ParkingRepository {
 
-List<ParkingEntity> getAllParking();
+    List<ParkingEntity> getAllParking();
 
 Parking findById (Long id);
 

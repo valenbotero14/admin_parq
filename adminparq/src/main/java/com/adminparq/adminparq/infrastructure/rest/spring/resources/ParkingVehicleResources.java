@@ -1,37 +1,27 @@
 package com.adminparq.adminparq.infrastructure.rest.spring.resources;
 
-
-import com.adminparq.adminparq.application.repository.ParkingVehicleRepository;
-import com.adminparq.adminparq.application.repository.VehicleRepository;
+import com.adminparq.adminparq.application.repository.ParkingRepository;
 import com.adminparq.adminparq.application.service.ParkingService;
 import com.adminparq.adminparq.application.service.ParkingVehicleService;
 
 import com.adminparq.adminparq.domain.ParkingVehicle;
 
-import com.adminparq.adminparq.domain.Vehicle;
 import com.adminparq.adminparq.infrastructure.db.springdata.dbo.ParkingEntity;
 import com.adminparq.adminparq.infrastructure.db.springdata.dbo.ParkingVehicleEntity;
 
-import com.adminparq.adminparq.infrastructure.db.springdata.dbo.VehicleEntity;
-import com.adminparq.adminparq.infrastructure.db.springdata.repository.SpringDataVehicleRepository;
-import com.adminparq.adminparq.infrastructure.db.springdata.repository.VehicleDboRepository;
-import com.adminparq.adminparq.infrastructure.rest.spring.dto.ParkingDto;
 import com.adminparq.adminparq.infrastructure.rest.spring.dto.ParkingVehicleDto;
 
 import com.adminparq.adminparq.infrastructure.rest.spring.dto.ResponseDto;
-import com.adminparq.adminparq.infrastructure.rest.spring.dto.VehicleDto;
 import com.adminparq.adminparq.infrastructure.rest.spring.mapper.ParkingVehicleMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
-import org.springframework.data.repository.query.Param;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -106,32 +96,48 @@ public class ParkingVehicleResources {
         if (parkingCar.containsKey(parkingVehicleDto.getVehicle())) {
             return ResponseEntity.badRequest().build();
         }
-        //Add the cart to the HashMap
+
+        // Check if the parking lot has reached its maximum capacity
+        int currentCapacity = parkingCar.size();
+        if (currentCapacity >= parkingVehicleDto.getParking().getCapacity()) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new ParkingVehicleDto("Parking lot is full"));
+        }
+
+        //Add the car to the HashMap
         parkingCar.put(parkingVehicleDto.getVehicle(), parkingVehicleDto);
 
         return new ResponseEntity<>(parkingVehicleMapper.toDto(parkingVehicleService.saveParkingVehicle(parkingVehicleMapper.toDomain(parkingVehicleDto))),
                 HttpStatus.CREATED);
-
     }
 
-    @GetMapping("avaliableParking")
-    public ResponseEntity<ResponseDto> avaliableParking(@RequestParam(defaultValue = "") String typeVehicle) {
+
+
+    @GetMapping("availableParking")
+    public ResponseEntity<ResponseDto> availableParking(@RequestParam(defaultValue = "") String typeVehicle) {
 
         List<ParkingEntity> parkingData = parkingService.getAllParking();
 
         int countParking = parkingData.size();
 
-        int incremento = 0;
+        int occupiedSpaces = 0;
 
-        for (int i = 0; i < countParking; i++) {
+        int spaceInUse = 0;
 
-            List<ParkingVehicleEntity> parkingVehicleEntity = parkingVehicleService.findAllByParkingId(parkingData.get(i).getId());
 
-            for (int z = 0; z < parkingVehicleEntity.size(); z++){
+        for (ParkingEntity parkingDatum : parkingData) {
 
-                if (parkingVehicleEntity.get(z).getTimeOutput() == null) {
+            List<ParkingVehicleEntity> parkingVehicleEntity = parkingVehicleService.findAllByParkingId(parkingDatum.getId());
 
-                    incremento++;
+            for (int z = 0; z < parkingVehicleEntity.size(); z++) {
+
+                if (parkingVehicleEntity.get(z).getTimeOutput() == null)  {
+
+                    occupiedSpaces++;
+
+                }
+                if (parkingVehicleEntity.get(z).getTimeOutput() != null) {
+
+                    spaceInUse++;
 
                 }
 
@@ -139,11 +145,11 @@ public class ParkingVehicleResources {
 
 
         }
-        return new ResponseEntity<>(new ResponseDto("Celdas disponiles", 200, incremento), HttpStatus.OK);
 
+        int availableSpaces = countParking - occupiedSpaces;
 
+        return new ResponseEntity<>(new ResponseDto("Spaces available: " + availableSpaces + " Occupied spaces: " + occupiedSpaces + " Spaces in use: " + spaceInUse, 200), HttpStatus.OK);
     }
-
 
 
 }

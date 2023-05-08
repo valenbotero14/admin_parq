@@ -13,11 +13,13 @@ public interface ParkingVehicleRepository {
 
     List<ParkingVehicleEntity> findAllByParkingId (Long id);
 
+
     ParkingVehicle save (ParkingVehicle parkingVehicle);
 
     void updateParkingVehicle (ParkingVehicle parkingVehicle);
 
     void deleteById (Long id);
+
 
 
 }
