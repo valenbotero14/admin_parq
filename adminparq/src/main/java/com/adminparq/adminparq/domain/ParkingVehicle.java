@@ -18,7 +18,7 @@ public class ParkingVehicle {
 
     private Long id;
 
-    private int vehicle;
+    private VehicleEntity vehicle;
 
     private ParkingEntity parking;
 

@@ -1,9 +1,11 @@
 package com.adminparq.adminparq.infrastructure.db.springdata.dbo;
 
+import com.adminparq.adminparq.domain.Vehicle;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.time.LocalDateTime;
 
@@ -22,8 +24,9 @@ public class ParkingVehicleEntity {
     @Column (name = "id", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "vehicle_id")
-    private int vehicle;
+    @ManyToOne
+    @JoinColumn(name = "vehicle_id", referencedColumnName = "id")
+    private VehicleEntity vehicle;
 
     @ManyToOne
     @JoinColumn(name = "parking_id", referencedColumnName = "id")

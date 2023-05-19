@@ -17,8 +17,4 @@ public class Parking {
    /*Fuel4, Fuel2, Elect4, Elect2 */
    private String parkingType;
 
-   /*Fuel4 (50), Fuel2 (60), Elect4 (10), Elect2 (10)*/
-   private Integer capacity;
-
-
 }

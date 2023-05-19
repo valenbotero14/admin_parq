@@ -23,6 +23,12 @@ public class ParkingService {
 
     }
 
+    public List<ParkingEntity> getAllParkingByParkingType (String parkingType){
+
+        return  parkingRepository.getAllParkingByParkingType(parkingType);
+
+    }
+
     public Parking getParking(Long id) {
 
         return parkingRepository.findById(id);

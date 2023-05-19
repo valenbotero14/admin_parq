@@ -27,8 +27,13 @@ public class VehicleEntity {
     @Column (name = "vehicle_type")
     private String vehicleType;
 
-    @Column (name = "tire")
-    private String tire;
+    @Column (name = "wheels")
+    private String wheels;
+
+    public VehicleEntity(Long id) {
+        this.id = id;
+    }
+
 
 
 

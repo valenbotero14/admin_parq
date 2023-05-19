@@ -70,7 +70,7 @@ public class VehicleResources {
         existentVehicle.setId(id);
         existentVehicle.setPlate(vehicle.getPlate());
         existentVehicle.setVehicleType(vehicle.getVehicleType());
-        existentVehicle.setTire(vehicle.getTire());
+        existentVehicle.setWheels(vehicle.getWheels());
 
         vehicleService.updateVehicle(existentVehicle);
 

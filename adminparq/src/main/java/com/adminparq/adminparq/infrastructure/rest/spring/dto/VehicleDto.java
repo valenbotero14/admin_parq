@@ -18,7 +18,7 @@ public class VehicleDto {
 
     private String vehicleType;
 
-    private String tire;
+    private int wheels;
 
 
 }

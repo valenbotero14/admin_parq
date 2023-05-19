@@ -1,5 +1,6 @@
 package com.adminparq.adminparq.infrastructure.rest.spring.dto;
 
+import com.adminparq.adminparq.domain.Vehicle;
 import com.adminparq.adminparq.infrastructure.db.springdata.dbo.ParkingEntity;
 import com.adminparq.adminparq.infrastructure.db.springdata.dbo.VehicleEntity;
 import lombok.AllArgsConstructor;
@@ -18,7 +19,7 @@ public class ParkingVehicleDto {
 
     private Long id;
 
-    private int vehicle;
+    private VehicleEntity vehicle;
 
     private ParkingEntity parking;
 

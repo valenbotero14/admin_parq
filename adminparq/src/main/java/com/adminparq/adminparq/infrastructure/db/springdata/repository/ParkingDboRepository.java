@@ -4,6 +4,7 @@ package com.adminparq.adminparq.infrastructure.db.springdata.repository;
 import com.adminparq.adminparq.application.repository.ParkingRepository;
 import com.adminparq.adminparq.domain.Parking;
 import com.adminparq.adminparq.infrastructure.db.springdata.dbo.ParkingEntity;
+import com.adminparq.adminparq.infrastructure.db.springdata.dbo.ParkingVehicleEntity;
 import com.adminparq.adminparq.infrastructure.db.springdata.mapper.ParkingEntityMapper;
 import com.adminparq.adminparq.infrastructure.rest.spring.dto.VehicleDto;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,13 @@ public class ParkingDboRepository implements ParkingRepository {
 
         return parkingMapper.toDomain(parkingRepository.findById(id).orElseThrow());
     }
+
+    @Override
+    public List<ParkingEntity> getAllParkingByParkingType(String parkingType) {
+
+        return parkingRepository.getAllParkingByParkingType(parkingType);
+    }
+
 
     @Override
     public Parking save(Parking parking) {
