@@ -35,6 +35,10 @@ public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
 
+    /**
+     * list employees
+     */
+
     public List<EmployeeEntity> getAllEmployee() {
 
         return employeeRepository.getAllEmployee();
@@ -42,24 +46,38 @@ public class EmployeeService {
     }
 
 
+    /**
+     * find employee by id
+     */
     public Employee getEmployee(Long id) {
 
         return employeeRepository.findById(id);
 
     }
 
+
+    /**
+     * save employee
+     */
     public Employee saveEmployee(Employee employee) {
 
         return employeeRepository.save(employee);
 
     }
 
+
+    /**
+     * update employee
+     */
     public void updateEmployee(Employee existentEmployee) {
 
         employeeRepository.updateEmployee(existentEmployee);
 
     }
 
+    /**
+     * Delete employee by id
+     */
     public void deleteEmployee(long id) {
 
         employeeRepository.deleteById(id);

@@ -16,12 +16,12 @@ import lombok.Setter;
 
 public class EmployeeDto {
 
-  private Long id;
+    private Long id;
 
-  private String name;
+    private String name;
 
-  private String user;
+    private String user;
 
-  private String password;
+    private String password;
 
 }

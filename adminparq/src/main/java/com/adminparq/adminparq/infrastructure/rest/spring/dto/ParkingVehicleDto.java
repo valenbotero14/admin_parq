@@ -1,6 +1,5 @@
 package com.adminparq.adminparq.infrastructure.rest.spring.dto;
 
-import com.adminparq.adminparq.domain.Vehicle;
 import com.adminparq.adminparq.infrastructure.db.springdata.dbo.ParkingEntity;
 import com.adminparq.adminparq.infrastructure.db.springdata.dbo.VehicleEntity;
 import lombok.AllArgsConstructor;
@@ -26,6 +25,10 @@ public class ParkingVehicleDto {
     private LocalDateTime timeEntrance;
 
     private LocalDateTime timeOutput;
+
+    private Long totalTime;
+
+    private Long totalPrice;
 
 
     public ParkingVehicleDto(String message) {

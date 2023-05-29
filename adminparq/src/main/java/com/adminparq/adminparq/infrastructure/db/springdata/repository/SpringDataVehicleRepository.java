@@ -8,9 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SpringDataVehicleRepository extends JpaRepository<VehicleEntity, Long> {
 
-    VehicleEntity findByPlate (String plate);
-
-
+    VehicleEntity findByPlate(String plate);
 
 
 }

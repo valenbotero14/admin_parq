@@ -33,7 +33,7 @@ public class VehicleDboRepository implements VehicleRepository {
     }
 
     @Override
-    public Vehicle findByPlate (String plate){
+    public Vehicle findByPlate(String plate) {
 
         return vehicleMapper.toDomain(vehicleRepository.findByPlate(plate));
     }

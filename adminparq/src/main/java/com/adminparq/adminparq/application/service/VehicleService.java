@@ -31,7 +31,7 @@ public class VehicleService {
 
     }
 
-    public Vehicle findByPlate (String plate) {
+    public Vehicle findByPlate(String plate) {
 
         return vehicleRepository.findByPlate(plate);
     }

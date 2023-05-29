@@ -26,7 +26,7 @@ public class ParkingVehicleService {
     }
 
 
-    public  List<ParkingVehicleEntity> findAllByParkingId (Long id) {
+    public List<ParkingVehicleEntity> findAllByParkingId(Long id) {
 
         return parkingVehicleRepository.findAllByParkingId(id);
     }
@@ -57,7 +57,6 @@ public class ParkingVehicleService {
         parkingVehicleRepository.deleteById(id);
 
     }
-
 
 
 }

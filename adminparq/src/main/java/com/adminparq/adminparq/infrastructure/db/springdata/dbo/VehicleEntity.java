@@ -1,6 +1,5 @@
 package com.adminparq.adminparq.infrastructure.db.springdata.dbo;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,25 +15,26 @@ public class VehicleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic (optional = false)
+    @Basic(optional = false)
 
-    @Column (name = "id", unique = true, nullable = false)
+    @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
-    @Column (name = "plate")
+    @Column(name = "plate")
     private String plate;
 
-    @Column (name = "vehicle_type")
+    @Column(name = "vehicle_type")
     private String vehicleType;
 
-    @Column (name = "wheels")
+    @Column(name = "wheels")
     private String wheels;
+
+    @Column(name = "is_electric")
+    private int isElectric;
 
     public VehicleEntity(Long id) {
         this.id = id;
     }
-
-
 
 
 }

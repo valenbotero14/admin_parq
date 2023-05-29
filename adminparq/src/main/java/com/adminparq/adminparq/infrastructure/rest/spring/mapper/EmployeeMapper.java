@@ -9,8 +9,8 @@ import com.adminparq.adminparq.infrastructure.rest.spring.dto.EmployeeDto;
 @Mapper(componentModel = "spring")
 
 public interface EmployeeMapper {
-  EmployeeDto toDto(Employee employee);
+    EmployeeDto toDto(Employee employee);
 
-  Employee toDomain(EmployeeDto employeeDto);
+    Employee toDomain(EmployeeDto employeeDto);
 }
 

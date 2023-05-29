@@ -1,11 +1,10 @@
 package com.adminparq.adminparq.infrastructure.db.springdata.dbo;
 
-import com.adminparq.adminparq.domain.Vehicle;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.time.LocalDateTime;
 
@@ -19,9 +18,9 @@ public class ParkingVehicleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic (optional = false)
+    @Basic(optional = false)
 
-    @Column (name = "id", unique = true, nullable = false)
+    @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
     @ManyToOne
@@ -32,13 +31,17 @@ public class ParkingVehicleEntity {
     @JoinColumn(name = "parking_id", referencedColumnName = "id")
     private ParkingEntity parking;
 
-    @Column (name = "time_entrance")
+    @Column(name = "time_entrance")
     private LocalDateTime timeEntrance;
 
-    @Column (name = "time_output")
+    @Column(name = "time_output")
     private LocalDateTime timeOutput;
 
+    @Column(name = "total_time")
+    private Long totalTime;
 
+    @Column(name = "total_price")
+    private Long totalPrice;
 
 
 }

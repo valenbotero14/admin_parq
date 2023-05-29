@@ -13,8 +13,8 @@ import lombok.Setter;
 
 public class Parking {
 
-   private Long id;
-   /*Fuel4, Fuel2, Elect4, Elect2 */
-   private String parkingType;
+    private Long id;
+    /*Fuel4, Fuel2, Elect4, Elect2 */
+    private String parkingType;
 
 }

@@ -4,7 +4,6 @@ import com.adminparq.adminparq.application.service.ParkingService;
 import com.adminparq.adminparq.domain.Parking;
 import com.adminparq.adminparq.infrastructure.db.springdata.dbo.ParkingEntity;
 import com.adminparq.adminparq.infrastructure.rest.spring.dto.ParkingDto;
-import com.adminparq.adminparq.infrastructure.rest.spring.dto.VehicleDto;
 import com.adminparq.adminparq.infrastructure.rest.spring.mapper.ParkingMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @RequiredArgsConstructor
@@ -27,7 +24,6 @@ public class ParkingResources {
 
     @Autowired
     private final ParkingMapper parkingMapper;
-
 
 
     @GetMapping("listParking")
@@ -46,8 +42,8 @@ public class ParkingResources {
     @PostMapping("parking")
     public ResponseEntity<ParkingDto> saveParking(@RequestBody ParkingDto parkingDto) {
 
-        return new ResponseEntity<>(parkingMapper.toDto(parkingService.saveParking(parkingMapper.toDomain( parkingDto ))),
-                HttpStatus.CREATED );
+        return new ResponseEntity<>(parkingMapper.toDto(parkingService.saveParking(parkingMapper.toDomain(parkingDto))),
+                HttpStatus.CREATED);
 
     }
 
@@ -67,15 +63,11 @@ public class ParkingResources {
     }
 
     @DeleteMapping("deleteParkingById/{id}")
-    public String deleteParking(@PathVariable Long id){
+    public String deleteParking(@PathVariable Long id) {
 
         parkingService.deleteParking(id);
-        return "Parking number :"+id+" deleted successful";
+        return "Parking number :" + id + " deleted successful";
     }
-
-
-
-
 
 
 }

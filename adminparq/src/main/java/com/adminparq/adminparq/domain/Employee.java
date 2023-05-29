@@ -12,8 +12,8 @@ import lombok.Setter;
 
 
 /*
-* Getter - which returns the value of a class field
-* Setter - sets the value of a class field
+ * Getter - which returns the value of a class field
+ * Setter - sets the value of a class field
  */
 @Getter
 @Setter
@@ -24,7 +24,7 @@ automatically generates a constructor with all the fields of the class as argume
 @AllArgsConstructor
 
 /*
-* automatically generates a no-argument constructor on a class.
+ * automatically generates a no-argument constructor on a class.
  */
 @NoArgsConstructor
 

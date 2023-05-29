@@ -7,8 +7,8 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface VehicleEntityMapper {
 
-    Vehicle toDomain (VehicleEntity vehicleEntity);
+    Vehicle toDomain(VehicleEntity vehicleEntity);
 
-    VehicleEntity toDbo (Vehicle vehicle);
+    VehicleEntity toDbo(Vehicle vehicle);
 
 }

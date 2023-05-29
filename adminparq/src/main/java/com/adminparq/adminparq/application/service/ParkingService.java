@@ -23,9 +23,9 @@ public class ParkingService {
 
     }
 
-    public List<ParkingEntity> getAllParkingByParkingType (String parkingType){
+    public List<ParkingEntity> getAllParkingByParkingType(String parkingType) {
 
-        return  parkingRepository.getAllParkingByParkingType(parkingType);
+        return parkingRepository.getAllParkingByParkingType(parkingType);
 
     }
 
@@ -53,8 +53,5 @@ public class ParkingService {
 
     }
 
-    /*public long countAllParking() {
 
-        return ParkingRepository.count();
-    }*/
 }

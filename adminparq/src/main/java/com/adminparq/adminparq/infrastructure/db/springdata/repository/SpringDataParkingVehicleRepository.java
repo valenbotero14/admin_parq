@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @Repository
-public interface SpringDataParkingVehicleRepository  extends JpaRepository<ParkingVehicleEntity, Long> {
+public interface SpringDataParkingVehicleRepository extends JpaRepository<ParkingVehicleEntity, Long> {
 
     List<ParkingVehicleEntity> findAllByParkingId(Long id);
 

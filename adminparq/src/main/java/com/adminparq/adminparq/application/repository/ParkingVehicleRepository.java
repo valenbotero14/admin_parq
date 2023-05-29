@@ -9,17 +9,16 @@ public interface ParkingVehicleRepository {
 
     List<ParkingVehicleEntity> getAllParkingVehicle();
 
-    ParkingVehicle findById (Long id);
+    ParkingVehicle findById(Long id);
 
-    List<ParkingVehicleEntity> findAllByParkingId (Long id);
+    List<ParkingVehicleEntity> findAllByParkingId(Long id);
 
 
-    ParkingVehicle save (ParkingVehicle parkingVehicle);
+    ParkingVehicle save(ParkingVehicle parkingVehicle);
 
-    void updateParkingVehicle (ParkingVehicle parkingVehicle);
+    void updateParkingVehicle(ParkingVehicle parkingVehicle);
 
-    void deleteById (Long id);
-
+    void deleteById(Long id);
 
 
 }

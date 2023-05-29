@@ -5,12 +5,12 @@ import com.adminparq.adminparq.domain.Parking;
 import com.adminparq.adminparq.infrastructure.db.springdata.dbo.ParkingEntity;
 import org.mapstruct.Mapper;
 
-@Mapper (componentModel = "spring")
+@Mapper(componentModel = "spring")
 public interface ParkingEntityMapper {
 
-    Parking toDomain (ParkingEntity parkingEntity);
+    Parking toDomain(ParkingEntity parkingEntity);
 
-    ParkingEntity toDbo (Parking parking);
+    ParkingEntity toDbo(Parking parking);
 
 
 }

@@ -22,7 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 
 /*
- * used to create RESTful APIs. It is a combination of @Controller and @ResponseBody annotations
+ * used to create REST APIs. It is a combination of @Controller and @ResponseBody annotations
  */
 @RestController
 public class EmployeeResources {
@@ -51,11 +51,11 @@ public class EmployeeResources {
     public ResponseEntity<EmployeeDto> saveEmployee(@RequestBody EmployeeDto employeeDto) {
 
         return new ResponseEntity<>(employeeMapper.toDto(employeeService.saveEmployee(employeeMapper.toDomain(employeeDto))),
-                HttpStatus.CREATED );
+                HttpStatus.CREATED);
 
     }
 
-    @PutMapping ("updateEmployeeById/{id}")
+    @PutMapping("updateEmployeeById/{id}")
     public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
 
         Employee existentEmployee = employeeService.getEmployee(id);
@@ -65,18 +65,18 @@ public class EmployeeResources {
         existentEmployee.setUser(employee.getUser());
         existentEmployee.setPassword(employee.getPassword());
 
-          employeeService.updateEmployee(existentEmployee);
+        employeeService.updateEmployee(existentEmployee);
 
 
         return existentEmployee;
     }
 
     @DeleteMapping("deleteEmployeeById/{id}")
-            public String deleteEmployee(@PathVariable Long id){
+    public String deleteEmployee(@PathVariable Long id) {
 
-                employeeService.deleteEmployee(id);
-                return "Employee number :"+id+" deleted successful";
-            }
+        employeeService.deleteEmployee(id);
+        return "Employee number :" + id + " deleted successful";
+    }
 
-        }
+}
 

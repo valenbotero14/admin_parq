@@ -26,6 +26,9 @@ public class ParkingVehicle {
 
     private LocalDateTime timeOutput;
 
+    private Long totalTime;
+
+    private Long totalPrice;
 
     public ParkingVehicle(LocalDateTime entrada, LocalDateTime salida) {
     }

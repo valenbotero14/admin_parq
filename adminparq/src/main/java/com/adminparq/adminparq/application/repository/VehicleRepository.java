@@ -9,17 +9,17 @@ public interface VehicleRepository {
 
     List<VehicleEntity> getAllVehicle();
 
-    Vehicle findById (Long id);
+    Vehicle findById(Long id);
 
 
-    Vehicle save (Vehicle  vehicle);
+    Vehicle save(Vehicle vehicle);
 
 
-    void updateVehicle (Vehicle vehicle);
+    void updateVehicle(Vehicle vehicle);
 
 
-    void deleteById (Long id);
+    void deleteById(Long id);
 
 
-    Vehicle findByPlate (String plate);
+    Vehicle findByPlate(String plate);
 }

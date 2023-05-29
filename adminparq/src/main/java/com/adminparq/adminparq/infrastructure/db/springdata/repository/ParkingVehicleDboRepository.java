@@ -26,8 +26,6 @@ public class ParkingVehicleDboRepository implements ParkingVehicleRepository {
     }
 
 
-
-
     @Override
     public ParkingVehicle findById(Long id) {
 
@@ -35,9 +33,9 @@ public class ParkingVehicleDboRepository implements ParkingVehicleRepository {
     }
 
     @Override
-    public List<ParkingVehicleEntity> findAllByParkingId (Long id){
+    public List<ParkingVehicleEntity> findAllByParkingId(Long id) {
 
-        return  parkingVehicleRepository.findAllByParkingId(id);
+        return parkingVehicleRepository.findAllByParkingId(id);
 
     }
 
@@ -46,7 +44,6 @@ public class ParkingVehicleDboRepository implements ParkingVehicleRepository {
     public ParkingVehicle save(ParkingVehicle parkingVehicle) {
         return parkingVehicleMapper.toDomain(parkingVehicleRepository.save(parkingVehicleMapper.toDbo(parkingVehicle)));
     }
-
 
 
     @Override
