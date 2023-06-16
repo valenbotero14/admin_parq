@@ -27,10 +27,10 @@ public class VehicleEntity {
     private String vehicleType;
 
     @Column(name = "wheels")
-    private String wheels;
+    private int wheels;
 
     @Column(name = "is_electric")
-    private int isElectric;
+    private Boolean isElectric;
 
     public VehicleEntity(Long id) {
         this.id = id;

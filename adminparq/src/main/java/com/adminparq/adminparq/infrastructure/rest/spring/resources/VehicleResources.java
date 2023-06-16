@@ -17,6 +17,9 @@ import java.util.List;
 @RequiredArgsConstructor
 
 @RestController
+
+@CrossOrigin(origins = "*",methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.PATCH,RequestMethod.DELETE})
+
 public class VehicleResources {
 
 

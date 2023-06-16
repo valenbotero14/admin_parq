@@ -20,6 +20,7 @@ public class Vehicle {
 
     private int wheels;
 
-    private int isElectric;
+    /*datos primitivos minuscula - clases mayuscula*/
+    private Boolean isElectric;
 
 }

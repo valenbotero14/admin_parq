@@ -32,12 +32,13 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 
 @RestController
+
+@CrossOrigin(origins = "*",methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.PATCH,RequestMethod.DELETE})
 
 public class ParkingVehicleResources {
 
@@ -54,6 +55,7 @@ public class ParkingVehicleResources {
     private final ParkingService parkingService;
 
     private final Map<VehicleEntity, ParkingVehicleDto> parkingCar = new HashMap<>(); //HashMap to store the cars in the parking lot
+
 
 
     @GetMapping("listParkingVehicle")
@@ -135,7 +137,7 @@ public class ParkingVehicleResources {
     }
 
 
-    @GetMapping("availableParking")
+    @GetMapping("api/availableParking")
     public ResponseEntity<ResponseDto> availableParking(@RequestParam(defaultValue = "") String typeVehicle) {
 
         List<ParkingEntity> parkingData = parkingService.getAllParking();

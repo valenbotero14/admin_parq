@@ -20,7 +20,7 @@ public class VehicleDto {
 
     private int wheels;
 
-    private boolean isElectric;
+    private Boolean isElectric;
 
 
 }
